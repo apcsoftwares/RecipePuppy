@@ -60,6 +60,8 @@ public class ResultsActivity extends AppCompatActivity {
                        textViewEmptyResult.append("NO RESULTS");
                    }
 
+
+                   //Recorro todas las recetas y las voy agregando al linearLayout
                    for (Recipe recipe : recipepuppy.getRecipes()) {
 
                        TextView txtTitle = new TextView(ResultsActivity.this);
