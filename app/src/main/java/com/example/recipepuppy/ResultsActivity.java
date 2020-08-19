@@ -2,6 +2,7 @@ package com.example.recipepuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.Gravity;
@@ -20,8 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ResultsActivity extends AppCompatActivity {
 
 
-    private TextView textViewResult;
-    private TextView textViewLink;
+    private TextView textViewEmptyResult;
     private RecipePuppyAPI recipePuppyAPI;
     private LinearLayout linearLayout;
     private Retrofit retrofit;
@@ -32,8 +32,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        textViewResult = findViewById(R.id.textview_result);
-        textViewLink = findViewById(R.id.textview_link);
+        textViewEmptyResult = findViewById(R.id.textview_result);
         linearLayout = findViewById(R.id.linearLayout);
 
         //Configura retrofit para comunicarse con API de RecipePuppy.com
@@ -51,21 +50,23 @@ public class ResultsActivity extends AppCompatActivity {
                @Override
                public void onResponse(Call<Recipepuppy> call, Response<Recipepuppy> response) {
                    if (!response.isSuccessful()) {
-                       textViewResult.setText(response.code());
+                       textViewEmptyResult.setText(response.code());
                        return;
                    }
 
                    Recipepuppy recipepuppy = response.body();
 
                    if (recipepuppy.getRecipes().isEmpty()) {
-                       textViewResult.append("NO RESULTS");
+                       textViewEmptyResult.append("NO RESULTS");
                    }
 
                    for (Recipe recipe : recipepuppy.getRecipes()) {
 
                        TextView txtTitle = new TextView(ResultsActivity.this);
                        txtTitle.setGravity(Gravity.CENTER_HORIZONTAL);
+
                        txtTitle.setTextAppearance(ResultsActivity.this, R.style.TitleStyle);
+                       txtTitle.setTypeface(null, Typeface.BOLD);
                        txtTitle.setText(recipe.getTitle());
 
                        ImageView imageView = new ImageView(ResultsActivity.this);
@@ -97,7 +98,7 @@ public class ResultsActivity extends AppCompatActivity {
 
                @Override
                public void onFailure(Call<Recipepuppy> call, Throwable t) {
-                   textViewResult.setText(t.getMessage());
+                   textViewEmptyResult.setText(t.getMessage());
                }
            });
 

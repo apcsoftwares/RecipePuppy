@@ -16,15 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/textview_result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textview_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--
+             <TextView
+                 android:id="@+id/textview_link"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+               -->
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

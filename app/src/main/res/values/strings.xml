@@ -4,4 +4,5 @@
     <string name="apiLocation">http://www.recipepuppy.com/</string>
     <string name="blank_image">https://www.aiimsnagpur.edu.in/sites/default/files/inline-images/no-image-icon_27.png</string>
     <string name="ingredients">Ingredients: </string>
+    <string name="empty_query">Please provide a dish to look for</string>
 </resources>

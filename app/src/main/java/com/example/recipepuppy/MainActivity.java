@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
                 EditText editText = findViewById(R.id.editInput);
                 String textSearch = editText.getText().toString();
+
+                //Valida que no se introduzca un texto vacio
+                //El api retorna un listado aleatorio en dado caso
+                if (textSearch.isEmpty()) {
+                    Toast.makeText(MainActivity.this, getString(R.string.empty_query), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
 
                 Intent myIntent = new Intent(v.getContext(), ResultsActivity.class);
                 myIntent.putExtra("searchString", textSearch);
