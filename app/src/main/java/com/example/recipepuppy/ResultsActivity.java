@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.util.Linkify;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,6 +64,8 @@ public class ResultsActivity extends AppCompatActivity {
                    for (Recipe recipe : recipepuppy.getRecipes()) {
 
                        TextView txtTitle = new TextView(ResultsActivity.this);
+                       txtTitle.setGravity(Gravity.CENTER_HORIZONTAL);
+                       txtTitle.setTextAppearance(ResultsActivity.this, R.style.TitleStyle);
                        txtTitle.setText(recipe.getTitle());
 
                        ImageView imageView = new ImageView(ResultsActivity.this);
@@ -77,11 +80,11 @@ public class ResultsActivity extends AppCompatActivity {
                        Glide.with(ResultsActivity.this).load(imgUrl).into(imageView);
 
                        TextView txtIngredients = new TextView(ResultsActivity.this);
-                       txtIngredients.setText("Ingredients: " + recipe.getIngredients());
+                       txtIngredients.setText(getString(R.string.ingredients) + recipe.getIngredients());
 
                        TextView txtLink = new TextView(ResultsActivity.this);
                        txtLink.setAutoLinkMask(Linkify.WEB_URLS);
-                       txtLink.setText("LINK:" + recipe.getHref());
+                       txtLink.setText(recipe.getHref());
 
                        linearLayout.addView(txtTitle);
                        linearLayout.addView(imageView);
