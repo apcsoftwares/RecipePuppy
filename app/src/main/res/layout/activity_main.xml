@@ -43,11 +43,11 @@
             tools:text="@string/btn_buscar" />
 
         <TextView
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="150dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:text="Powered by RecipePuppy.com" />
+            android:text="@string/credit" />
 
     </LinearLayout>
 
